@@ -41,11 +41,6 @@ var Bazaar = {
     var success = (typeof successCallback == "function" ? successCallback : function(){});
     var error = (typeof errorCallback == "function" ? errorCallback : function(){});
     exec(success, error, "Bazaar", "developer", [developerId]);
-  },
-  update: function(packageName, successCallback, errorCallback) {
-    var success = (typeof successCallback == "function" ? successCallback : function(){});
-    var error = (typeof errorCallback == "function" ? errorCallback : function(){});
-    exec(success, error, "Bazaar", "update", [packageName]);
   }
 };
 

@@ -35,61 +35,15 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context; 
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.ComponentName;
-import android.os.IBinder;
 import android.net.Uri;
 
-import com.farsitel.bazaar.IUpdateCheckService;
-
 public class Bazaar extends CordovaPlugin {
-    IUpdateCheckService service;
-    UpdateServiceConnection connection;
     CallbackContext callback;
     String packageName;
     Activity activity;
 
-    class UpdateServiceConnection implements ServiceConnection {
-        public void onServiceConnected(ComponentName name, IBinder boundService) {
-            service = IUpdateCheckService.Stub.asInterface((IBinder) boundService);
-            long vCode = 0;
-            try {
-                vCode = service.getVersionCode(packageName);
-                callback.success(Long.toString(vCode));
-            } catch (Exception e) {
-                callback.error(e.getMessage());
-            }
-            activity.unbindService(connection);
-            connection = null;
-        }
-
-        public void onServiceDisconnected(ComponentName name) {
-            service = null;
-        }
-    }
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("update")) {
-            try{
-                activity = this.cordova.getActivity();
-                callback = callbackContext;
-                packageName = args.getString(0);
-                connection = new UpdateServiceConnection();
-                Intent intent = new Intent("com.farsitel.bazaar.service.UpdateCheckService.BIND");
-                intent.setPackage("com.farsitel.bazaar");
-                boolean ret = activity.bindService(intent, connection, Context.BIND_AUTO_CREATE);
-                if (ret == false) {
-                    callbackContext.error("Intent not bind");
-                    return false;
-                }
-                return true;
-            } catch (JSONException e) {
-                callbackContext.error(e.getMessage());
-                return false;
-            }
-        }
-
         if (action.equals("show")) {
             try{
                 packageName = args.getString(0);

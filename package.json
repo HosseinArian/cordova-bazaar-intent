@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-bazaar",
   "version": "1.0.5",
-  "description": "This plugin helps peoples that need use Cafebazaar.ir Market intents and update check service in cordova projects",
+  "description": "This plugin helps peoples that need use Cafebazaar.ir Market intents in cordova projects",
   "cordova": {
     "id": "cordova-plugin-bazaar",
     "platforms": [
@@ -16,8 +16,6 @@
     "cafebazaar",
     "cafebazaar-utils",
     "cafebazaar-intent",
-    "cafebazaar-update",
-    "cafebazaar-update-check",
     "cafebazaar-rate",
     "ecosystem:cordova",
     "cordova-android"

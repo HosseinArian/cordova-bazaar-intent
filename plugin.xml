@@ -6,10 +6,10 @@
         version="1.0.5">
 
     <name>Cafebazaar Intents and Services</name>
-    <description>This plugin helps peoples that need use Cafebazaar.ir Market intents and update check service in cordova projects</description>
+    <description>This plugin helps peoples that need use Cafebazaar.ir Market intents in cordova projects</description>
 
     <author>Mohammad Reza Maghoul</author>
-    <keywords>cafebazaar,cafebazaar-intent,cafebazaar-update,cafebazaar-update-check,cafebazaar-rate</keywords>
+    <keywords>cafebazaar,cafebazaar-intent,cafebazaar-rate</keywords>
     <license>Apache 2.0</license>
 
     <engines>
@@ -27,8 +27,6 @@
                 <param name="android-package" value="org.apache.cordova.plugin.Bazaar" />
             </feature>
         </config-file>
-        <source-file src="src/android/Bazaar.java"
-                     target-dir="src/org/apache/cordova/plugin"/>
-        <source-file src="src/android/IUpdateCheckService.aidl" target-dir="src/com/farsitel/bazaar"/>
+        <source-file src="src/android/Bazaar.java" target-dir="src/org/apache/cordova/plugin"/>
     </platform>
 </plugin>
